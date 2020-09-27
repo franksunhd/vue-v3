@@ -1,30 +1,69 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view/>
+    <div id="nav">
+        <ul class="navLeft">
+            <li v-for="(item,index) in menuList" :key="index">
+                <router-link :to="item.path">{{item.name}}</router-link>
+            </li>
+        </ul>
+        <div class="navRight">
+            <router-view/>
+        </div>
+    </div>
 </template>
 
-<style lang="less">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+<script>
+    export default {
+        name: "App",
+        data() {
+            return {
+                menuList: [
+                    {path: "/", name: "Home"},
+                    {path: "/about", name: "About"},
+                ]
+            }
+        }
     }
-  }
-}
+</script>
+
+<style lang="less">
+    #app {
+        width: 100%;
+        height: 100%;
+        color: #2c3e50;
+    }
+
+    #nav {
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+
+        .navLeft {
+            width: 200px;
+            height: 100%;
+
+            li {
+                height: 30px;
+                line-height: 30px;
+                font-size: 20px;
+
+                & > a {
+                    font-weight: bold;
+                    color: #2c3e50;
+
+                    &.router-link-exact-active {
+                        color: #42b983;
+                    }
+                }
+            }
+        }
+
+        .navRight {
+            width: calc(100% - 200px);
+            height: 100%;
+        }
+    }
 </style>
