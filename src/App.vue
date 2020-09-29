@@ -12,15 +12,20 @@
 </template>
 
 <script>
+    import routerList from './router/index';
+
     export default {
         name: "App",
-        data() {
-            return {
-                menuList: [
-                    {path: "/", name: "Home"},
-                    {path: "/about", name: "About"},
-                ]
-            }
+        setup() {
+            let route = routerList.options.routes;
+            let menuList = new Array();
+            route.forEach((item) => {
+                let obj = new Object();
+                obj.path = item.path;
+                obj.name = item.meta ? (item.meta.title ? item.meta.title : item.name) : item.name;
+                menuList.push(obj);
+            });
+            return {menuList};
         }
     }
 </script>

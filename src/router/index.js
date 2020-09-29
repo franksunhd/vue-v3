@@ -4,12 +4,14 @@ const routes = [
     {
         path: '/',
         name: 'Home',
+        metaL: {title: '首页'},
         component: () => import("../views/Home.vue")
     },
     {
-        path: '/about',
-        name: 'About',
-        component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+        path: '/teLePort',
+        name: 'teLePort',
+        metaL: {title: 'teLePort'},
+        component: () => import(/* webpackChunkName: "about" */ '../views/teLePort')
     }
 ];
 

@@ -1,12 +1,12 @@
 <template>
-    <div class="about">
+    <div class="teLePort">
         <h1>This is an about page</h1>
     </div>
 </template>
 
 <script>
     export default {
-        name: "About",
+        name: "teLePort",
         setup() {
 
         }
