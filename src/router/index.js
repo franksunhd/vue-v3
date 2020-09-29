@@ -10,7 +10,7 @@ const routes = [
     {
         path: '/teLePort',
         name: 'teLePort',
-        metaL: {title: 'teLePort'},
+        metaL: {title: '传送门'},
         component: () => import(/* webpackChunkName: "about" */ '../views/teLePort')
     }
 ];
