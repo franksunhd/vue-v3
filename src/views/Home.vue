@@ -41,6 +41,11 @@
         <div>X: {{x}}</div>
         <div>Y: {{y}}</div>
     </h1>
+    <hr>
+    <h1>num---{{num}}</h1>
+    <h1>doubleNum---{{doubleNum}}</h1>
+    <h1 ref="desc"></h1>
+    <hr>
 </template>
 
 <script>
@@ -54,12 +59,16 @@
         // 好在哪
         setup() {
             // 这个的逻辑很清晰 告别大几百行的逻辑组件
-            let {count, add, state, addList, list, val, addVal, total} = useAddTodo();
+            let {
+                count, add, state, addList, list, val, addVal, total, num,
+                doubleNum, desc
+            } = useAddTodo();
             let {x, y} = useMouse();
             // 一大堆 useXX
             return {
                 count, add, state, addList, list, val, addVal, total,
-                x, y
+                x, y,
+                num, doubleNum, desc
             };
 
         },

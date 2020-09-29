@@ -1,4 +1,4 @@
-import {ref, reactive, unref, toRef, toRefs, computed} from 'vue';
+import {ref, reactive, unref, toRef, toRefs, computed, watch, onMounted, onUnmounted} from 'vue';
 
 function useAddTodo() {
     // ref 简单的数据结构变成响应式
@@ -50,7 +50,35 @@ function useAddTodo() {
 
     // toRefs: 解构对象中所有的key
     // toRef: 结构对象中的某个key
-    return {count, add, state, addList, ...toRefs(stateUnref), addVal, total};
+
+    // 侦听器
+    let num = ref(1);
+    let doubleNum = computed(() => num.value * 2);
+
+    let timer = null;
+    //
+    onMounted(() => {
+        timer = setInterval(() => {
+            num.value++;
+            if (num.value > 10) {
+                num.value = 1;
+            }
+        }, 1000);
+    });
+
+    onUnmounted(() => {
+        clearInterval(timer);
+    });
+
+    let desc = ref(null);
+    // 侦听器
+    watch(num, (val, oldVal) => {
+        const p = desc.value;
+        p.textContent = `通过refs的形式使用watch监听显示的值从 ${oldVal} 变为了 ${val}`;
+    });
+
+
+    return {count, add, num, doubleNum, desc, state, addList, ...toRefs(stateUnref), addVal, total};
 }
 
 export default useAddTodo;
