@@ -44,6 +44,8 @@
         .navLeft {
             width: 200px;
             height: 100%;
+            box-sizing: border-box;
+            border-right: 1px solid #42b983;
 
             li {
                 height: 30px;
@@ -64,6 +66,7 @@
         .navRight {
             width: calc(100% - 200px);
             height: 100%;
+            padding-left: 10px;
         }
     }
 </style>

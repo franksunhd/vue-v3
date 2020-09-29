@@ -1,61 +1,71 @@
 <template>
     <div class="home">
-        <h1>Vue3 TEST</h1>
-        <p>{{num}}</p>
-        <button @click="addRef">click ref ++</button>
-        <p>{{count.value}}</p>
-        <p>{{plus10}}</p>
-        <button @click="addReactive">Click reactive ++</button>
-        <p>{{status}}</p>
-        <button @click="setStatus">SetStatus</button>
+        <h1>---ref---</h1>
+        <h1>{{count}}</h1>
+        <button @click="add">累加器</button>
+        <!--
+           大圣老师 三天课程
+           vue3新增了什么：
+           性能；比vue2快了2倍
+           tree shaking: 按需编译代码
+           composition api: 类似hooks未来
+           typescript: 支持ts
+           自定义渲染
+         -->
     </div>
+    <hr>
+    <ul>
+        <li>
+            <h1>---reactive---</h1>
+        </li>
+        <li><input type="text" v-model="state.val">{{state.val}}</li>
+        <li v-for="(item,index) in state.list" :key="index">{{item.name}}</li>
+        <li>
+            <button @click="addList">添加</button>
+        </li>
+    </ul>
+    <h2>列表的长度：{{total}}</h2>
+    <hr>
+    <ul>
+        <li>
+            <h1>---toRefs---</h1>
+        </li>
+        <li><input type="text" v-model="val">{{val}}</li>
+        <li v-for="(item,index) in list" :key="index">{{item.name}}</li>
+        <li>
+            <button @click="addVal">添加</button>
+        </li>
+    </ul>
+    <hr>
+    <h1>
+        <div>X: {{x}}</div>
+        <div>Y: {{y}}</div>
+    </h1>
 </template>
 
 <script>
-    // @ is an alias to /src
-    import {getCurrentInstance, ref, reactive, computed, watch} from "vue";
+    // composition api 外引入
+    import useAddTodo from "../components/useAddTodo";
+    import useMouse from "../components/useMouse";
+    // mixin不清晰 而且会有命名重复的问题
 
     export default {
         name: "Home",
+        // 好在哪
         setup() {
-            //显示当前路径
-            const {ctx} = getCurrentInstance();
-            console.log(ctx.$router.currentRoute.value.path);
-
-            // 点击按钮 ref ++
-            const num = ref(1);
-            const addRef = () => {
-                num.value++;
-            };
-
-            // 点击按钮 reactive ++
-            const count = reactive({value: 1});
-            const addReactive = () => {
-                count.value++;
-            };
-            watch(count, (newVal, oldVal, clean) => {
-                console.log(newVal.value + "," + oldVal.value);
-                clean(() => console.log("Clean"));
-            });
-            // 计算×10
-            const plus10 = computed(() => count.value * 10);
-
-            // 获取state.status
-            const status = computed(() => ctx.$store.state.status);
-            const setStatus = () => {
-                console.log(ctx.$store.state);
-                ctx.$store.commit("setStatus", status.value);
-                console.log(ctx.$store.state.status);
-            };
+            // 这个的逻辑很清晰 告别大几百行的逻辑组件
+            let {count, add, state, addList, list, val, addVal, total} = useAddTodo();
+            let {x, y} = useMouse();
+            // 一大堆 useXX
             return {
-                num,
-                count,
-                addRef,
-                addReactive,
-                plus10,
-                status,
-                setStatus
+                count, add, state, addList, list, val, addVal, total,
+                x, y
             };
-        }
+
+        },
+
+        // 相比于mixin好处 数据来源清晰
+
+        // 如何组合
     };
 </script>
