@@ -45,8 +45,6 @@
     <h1>num---{{num}}</h1>
     <h1>doubleNum---{{doubleNum}}</h1>
     <h1 ref="desc"></h1>
-    <hr>
-    <teLePort></teLePort>
 </template>
 
 <script>
@@ -54,11 +52,9 @@
     import useAddTodo from "../components/useAddTodo";
     import useMouse from "../components/useMouse";
     // mixin不清晰 而且会有命名重复的问题
-    import teLePort from "./teLePort";
 
     export default {
         name: "Home",
-        components: {teLePort},
         // 好在哪
         setup() {
             // 这个的逻辑很清晰 告别大几百行的逻辑组件

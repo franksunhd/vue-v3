@@ -4,15 +4,16 @@ const routes = [
     {
         path: '/',
         name: 'Home',
-        metaL: {title: '首页'},
+        meta: {title: '首页'},
         component: () => import("../views/Home.vue")
     },
     {
         path: '/teLePort',
         name: 'teLePort',
-        metaL: {title: '传送门'},
+        meta: {title: '传送门'},
         component: () => import(/* webpackChunkName: "about" */ '../views/teLePort')
-    }
+    },
+
 ];
 
 const router = createRouter({

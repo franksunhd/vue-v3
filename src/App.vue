@@ -51,10 +51,11 @@
             height: 100%;
             box-sizing: border-box;
             border-right: 1px solid #42b983;
+            overflow-y: auto;
 
             li {
-                height: 30px;
-                line-height: 30px;
+                height: 40px;
+                line-height: 40px;
                 font-size: 20px;
 
                 & > a {
