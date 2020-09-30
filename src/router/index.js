@@ -13,7 +13,12 @@ const routes = [
         meta: {title: '传送门'},
         component: () => import(/* webpackChunkName: "about" */ '../views/teLePort')
     },
-
+    {
+        path: '/fragments',
+        name: 'fragments',
+        meta: {title: 'fragments'},
+        component: () => import(/* webpackChunkName: "about" */ '../views/fragments')
+    },
 ];
 
 const router = createRouter({
