@@ -45,6 +45,9 @@
     <h1>num---{{num}}</h1>
     <h1>doubleNum---{{doubleNum}}</h1>
     <h1 ref="desc"></h1>
+    <hr>
+    <h2>emits用法</h2>
+    <emits @my_click="onClick"/>
 </template>
 
 <script>
@@ -52,9 +55,11 @@
     import useAddTodo from "../components/useAddTodo";
     import useMouse from "../components/useMouse";
     // mixin不清晰 而且会有命名重复的问题
+    import emits from "./emits";
 
     export default {
         name: "Home",
+        components: {emits},
         // 好在哪
         setup() {
             // 这个的逻辑很清晰 告别大几百行的逻辑组件
@@ -63,11 +68,18 @@
                 doubleNum, desc
             } = useAddTodo();
             let {x, y} = useMouse();
+
+            function onClick() {
+                console.log('click me!');
+            }
+
             // 一大堆 useXX
             return {
-                count, add, state, addList, list, val, addVal, total,
+                count,
+                state, list, val, total,
                 x, y,
-                num, doubleNum, desc
+                num, doubleNum, desc,
+                onClick, add, addList, addVal,
             };
 
         },
