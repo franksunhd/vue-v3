@@ -48,6 +48,7 @@
     <hr>
     <h2>emits用法</h2>
     <emits @my_click="onClick"/>
+    <hr>
 </template>
 
 <script>

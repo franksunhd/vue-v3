@@ -25,6 +25,7 @@
                 obj.name = item.meta ? (item.meta.title ? item.meta.title : item.name) : item.name;
                 menuList.push(obj);
             });
+
             return {menuList};
         }
     }

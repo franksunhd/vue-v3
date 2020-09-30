@@ -1,4 +1,4 @@
-import {createApp} from 'vue';
+import {createApp, createRenderer} from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from './store';
@@ -6,11 +6,143 @@ import store from './store';
 // 全局引入css
 import "./assets/css/base.css";
 import "./assets/css/common.css";
+import CanvasApp from "./views/CanvasApp";
 
 createApp(App)
     .use(store)
     .use(router)
     .mount('#app');
+
+let ctx, canvas;
+// 自定义渲染器
+const nodeOps = {
+    createElement(tag, isSVG, is) {
+        // 处理元素的创建逻辑
+        return {tag};
+    },
+    insert(child, parent, author) {
+        // 处理元素的插入逻辑
+        // 1. 如果子元素,不是dom元素,测试只需要将数据保存到前面虚拟对象上即可
+        child.parent = parent;
+        if (!parent.child) {
+            parent.child = [child];
+        } else {
+            parent.child.push(child);
+        }
+        // 2. 如果这里的元素是真实的dom元素.在这里会是canvas
+        if (parent.nodeType === 1) {
+            // 如果节点是元素节点，则 nodeType 属性将返回 1。
+            // 如果节点是属性节点，则 nodeType 属性将返回 2。
+            draw(child);
+
+            // 事件处理
+            if (child.onClick) {
+                canvas.addEventListener('click', () => {
+                    child.onClick();
+                    setTimeout(() => {
+                        draw(child);
+                    }, 0);
+                })
+            }
+        }
+    },
+    remove: child => {
+    },
+    createText: text => {
+    },
+    createComment: text => {
+    },
+    setText: (node, text) => {
+    },
+    setElementText: (node, text) => {
+    },
+    parentNode: node => {
+    },
+    nextSibling: node => {
+    },
+    querySelector: selector => {
+    },
+    setScopeId: (el, id) => {
+    },
+    cloneNode(el) {
+    },
+    insertStaticContent(content, parent, anchor, isSVG) {
+    },
+    patchProp(el, key, prevValue, nextValue, isSVG, prevChildren, parentComponent, parentSuspense, unmountChildren) {
+        // 属性更新
+        el[key] = nextValue;
+    }
+};
+
+const renderer = createRenderer(nodeOps);
+
+const draw = (el, noClear) => {
+    if (!noClear) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+    if (el.tag === "piechart") {
+        let {data, r, x, y} = el;
+        let total = data.reduce((memo, current) => memo + current.count, 0);
+        let start = 0, end = 0;
+        data.forEach((item) => {
+            end += item.count / total * 360;
+            drawPieChart(start, end, item.color, x, y, r);
+            drawPieChartText(item.name, (start + end) / 2, x, y, r);
+            start = end;
+        });
+    }
+    el.childs && el.childs.forEach(child => draw(child, true));
+};
+
+const d2a = (n) => {
+    return n * Math.PI / 180;
+};
+
+// 绘制扇形
+const drawPieChart = (start, end, color, cx, cy, r) => {
+    let x = cx + Math.cos(d2a(start)) * r;
+    let y = cy + Math.sin(d2a(start)) * r;
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.lineTo(x, y);
+    ctx.arc(cx, cy, r, d2a(start), d2a(end), false);
+    ctx.fillStyle = color;
+    ctx.fill();
+    ctx.stroke();
+    ctx.closePath();
+};
+
+// 绘制扇形的文字
+const drawPieChartText = (val, position, cx, cy, r) => {
+    ctx.beginPath();
+    let x = cx + Math.cos(d2a(position)) * r / 1.25 - 20;
+    let y = cx + Math.sin(d2a(position)) * r / 1.25;
+    ctx.fillStyle = '#000';
+    ctx.font = "20px 微软雅黑";
+    ctx.fillText(val, x, y);
+    ctx.closePath();
+};
+
+// 扩展mount 首先创建一个画布元素
+function createCanvasApp(App) {
+    const app = renderer.createApp(CanvasApp);
+    const mount = app.mount;
+    app.mount = function (selector) {
+        // 创建并插入画布
+        canvas = document.createElement('canvas');
+        ctx = canvas.getContext('2d');
+        // 设置画布属性
+        canvas.width = 600;
+        canvas.height = 600;
+        document.querySelector(selector).appendChild(canvas);
+
+        // 执行默认的mount
+        mount(canvas);
+    };
+    return app;
+}
+
+// createCanvasApp(CanvasApp).mount('#demo');
 
 /*
 * 为啥这么玩？
