@@ -1,4 +1,4 @@
-import {createApp, createRenderer} from 'vue';
+import {createApp, createRenderer, h} from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from './store';
@@ -8,10 +8,16 @@ import "./assets/css/base.css";
 import "./assets/css/common.css";
 import CanvasApp from "./views/CanvasApp";
 
+// 注意 h,use,mount,render,createRenderer 是 runtime-core的内容
+// createApp 是runtime-dom的内容
 createApp(App)
+    .component('comp', {render: () => h('h2', '我是自定义组件')})
     .use(store)
     .use(router)
     .mount('#app');
+
+// 阻止启用生产消息  在vue3中删除了
+// Vue.config.productionTip = false;
 
 let ctx, canvas;
 // 自定义渲染器

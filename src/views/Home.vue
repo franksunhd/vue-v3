@@ -1,4 +1,6 @@
 <template>
+    <comp/>
+    <hr>
     <div class="home">
         <h1>---ref---</h1>
         <h1>{{count}}</h1>
@@ -48,7 +50,6 @@
     <hr>
     <h2>emits用法</h2>
     <emits @my_click="onClick"/>
-    <hr>
 </template>
 
 <script>

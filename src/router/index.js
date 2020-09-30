@@ -26,6 +26,12 @@ const routes = [
         meta: {title: '自定义渲染器'},
         component: () => import('../views/CanvasApp')
     },
+    {
+        path: '/globalApi',
+        name: 'globalApi',
+        meta: {title: '全局API'},
+        component: () => import('../views/globalApi')
+    },
 ];
 
 const router = createRouter({
