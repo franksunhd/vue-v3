@@ -32,6 +32,12 @@ const routes = [
         meta: {title: '全局API'},
         component: () => import('../views/globalApi')
     },
+    {
+        path: '/VModel',
+        name: 'VModel',
+        meta: {title: 'v-model'},
+        component: () => import('../views/VModel')
+    },
 ];
 
 const router = createRouter({
