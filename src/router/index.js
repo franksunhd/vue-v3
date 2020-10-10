@@ -38,6 +38,12 @@ const routes = [
         meta: {title: 'v-model'},
         component: () => import('../views/VModel')
     },
+    {
+        path: '/renderTest',
+        name: 'renderTest',
+        meta: {title: '渲染函数API变化'},
+        component: () => import('../views/renderTest')
+    },
 ];
 
 const router = createRouter({
