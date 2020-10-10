@@ -14,6 +14,11 @@ createApp(App)
     .component('comp', {render: () => h('h2', '我是自定义组件')})
     .use(store)
     .use(router)
+    .directive('highlight', {
+        beforeMount(el, binding, vnode) {
+            el.style.color = binding.value;
+        }
+    })
     .mount('#app');
 
 // 阻止启用生产消息  在vue3中删除了

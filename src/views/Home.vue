@@ -84,6 +84,9 @@
         </li>
     </ul>
     <hr>
+    <!--自定义指令-->
+    <h1 v-highlight="'green'">这是一个指令</h1>
+    <hr>
 </template>
 
 <script>
