@@ -44,12 +44,12 @@ const routes = [
         meta: {title: '渲染函数API变化'},
         component: () => import('../views/renderTest')
     },
-    {
-        path: '/functional',
-        name: 'functional',
-        meta: {title: '函数式组件'},
-        component: () => import('../views/Functional')
-    },
+    // {
+    //     path: '/functional',
+    //     name: 'functional',
+    //     meta: {title: '函数式组件'},
+    //     component: () => import('../views/Functional')
+    // },
 ];
 
 const router = createRouter({

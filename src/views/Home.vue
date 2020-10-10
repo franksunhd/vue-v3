@@ -52,6 +52,7 @@
     <emits @my_click="onClick"/>
 
     <hr>
+    <!--函数式组件-->
     <Functional level="1">
         <div>函数式组件---</div>
         <div>这是一个动态h元素</div>
@@ -66,9 +67,27 @@
         </ul>
     </Functional>
     <hr>
+    <!--异步组件-->
+    <asyncComponent></asyncComponent>
+    <ul>
+        <li>
+            <h2>异步组件定义时有如下变化：</h2>
+        </li>
+        <li>
+            <h3>必须明确使用defineAsyncComponent包裹</h3>
+        </li>
+        <li>
+            <h3>component 选项重命名为 loader</h3>
+        </li>
+        <li>
+            <h3>Loader 函数不在接收 resolve and reject 且必须返回一个Promise</h3>
+        </li>
+    </ul>
+    <hr>
 </template>
 
 <script>
+    import {defineAsyncComponent} from 'vue';
     // composition api 外引入
     import useAddTodo from "../components/useAddTodo";
     import useMouse from "../components/useMouse";
@@ -79,7 +98,17 @@
 
     export default {
         name: "Home",
-        components: {emits, Functional},
+        components: {
+            emits,
+            Functional,
+            asyncComponent: defineAsyncComponent({
+                loader: () => import('./AsyncComponent.vue'),
+                delay: 200,
+                timeout: 3000,
+                // errorComponent: xxx,
+                // loadingComponent: xxx
+            })
+        },
         props: {
             username: {type: String, default: "hello setup"},
         },
