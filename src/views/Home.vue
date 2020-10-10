@@ -1,6 +1,8 @@
 <template>
     <comp/>
     <hr>
+    <removeApi :isShow="false"/>
+    <hr>
     <div class="home">
         <h1>---ref---</h1>
         <h1>{{count}}</h1>
@@ -98,12 +100,14 @@
     import emits from "./emits";
 
     import Functional from "./Functional";
+    import removeApi from "./removeApi";
 
     export default {
         name: "Home",
         components: {
             emits,
             Functional,
+            removeApi,
             asyncComponent: defineAsyncComponent({
                 loader: () => import('./AsyncComponent.vue'),
                 delay: 200,

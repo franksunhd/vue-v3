@@ -50,6 +50,12 @@ const routes = [
         meta: {title: '动画'},
         component: () => import('../views/transitionTest')
     },
+    {
+        path: '/removeApi',
+        name: 'removeApi',
+        meta: {title: '移除的API'},
+        component: () => import('../views/removeApi')
+    },
 ];
 
 const router = createRouter({

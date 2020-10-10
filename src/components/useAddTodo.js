@@ -1,11 +1,13 @@
 import {ref, reactive, unref, toRef, toRefs, computed, watch, onMounted, onUnmounted} from 'vue';
+import {emitter} from "./emitter";
 
 function useAddTodo() {
     // ref 简单的数据结构变成响应式
-    let count = ref(1);
-
+    let count = ref(0);
     function add() {
         count.value++;
+
+        emitter.emit('sendMsg', count.value);
     }
 
     // reactive 复杂的数据结构变成响应式

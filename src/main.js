@@ -11,7 +11,7 @@ import CanvasApp from "./views/CanvasApp";
 // 注意 h,use,mount,render,createRenderer 是 runtime-core的内容
 // createApp 是runtime-dom的内容
 createApp(App)
-    .component('comp', {render: () => h('h2', '我是自定义组件')})
+    .component('comp', {render: () => h('h2', '我是自定义组件,在main.js定义')})
     .use(store)
     .use(router)
     .directive('highlight', {
