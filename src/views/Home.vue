@@ -50,6 +50,22 @@
     <hr>
     <h2>emits用法</h2>
     <emits @my_click="onClick"/>
+
+    <hr>
+    <Functional level="1">
+        <div>函数式组件---</div>
+        <div>这是一个动态h元素</div>
+        <div>
+            函数式组件仅能通过简单函数方式创建，functional选项废弃
+        </div>
+        <ul>
+            <li>性能提升在vue3中可忽略不计，所以vue3中推荐使用状态组件</li>
+            <li>函数时组件仅能通过纯函数形式声明，接收props和context两个参数</li>
+            <li>SFC中 `template` 不能添加functional特性声明函数是组件</li>
+            <li>{ functional: true }组件选项移除</li>
+        </ul>
+    </Functional>
+    <hr>
 </template>
 
 <script>
@@ -59,9 +75,11 @@
     // mixin不清晰 而且会有命名重复的问题
     import emits from "./emits";
 
+    import Functional from "./Functional";
+
     export default {
         name: "Home",
-        components: {emits},
+        components: {emits, Functional},
         props: {
             username: {type: String, default: "hello setup"},
         },
