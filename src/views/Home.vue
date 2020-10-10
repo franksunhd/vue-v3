@@ -62,8 +62,15 @@
     export default {
         name: "Home",
         components: {emits},
+        props: {
+            username: {type: String, default: "hello setup"},
+        },
         // 好在哪
-        setup() {
+        setup(props, ctx) {
+            console.log('setup');
+            console.log(props, ctx);
+            // this在setup中不可用
+
             // 这个的逻辑很清晰 告别大几百行的逻辑组件
             let {
                 count, add, state, addList, list, val, addVal, total, num,
@@ -85,6 +92,9 @@
             };
 
         },
+        beforeCreate() {
+            console.log('beforeCreate');
+        }
 
         // 相比于mixin好处 数据来源清晰
 
