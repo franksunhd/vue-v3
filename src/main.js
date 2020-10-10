@@ -138,8 +138,8 @@ function createCanvasApp(App) {
         canvas = document.createElement('canvas');
         ctx = canvas.getContext('2d');
         // 设置画布属性
-        canvas.width = 600;
-        canvas.height = 600;
+        canvas.width = 300;
+        canvas.height = 300;
         document.querySelector(selector).appendChild(canvas);
 
         // 执行默认的mount
@@ -148,7 +148,7 @@ function createCanvasApp(App) {
     return app;
 }
 
-// createCanvasApp(CanvasApp).mount('#demo');
+createCanvasApp(CanvasApp).mount('#demo');
 
 /*
 * 为啥这么玩？

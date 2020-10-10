@@ -1,12 +1,5 @@
 <template>
-    <piechart @click="handleClick" :data="state.data" :x="300" :y="300" :r="200"/>
-
-    <h1>
-        要想看到这个功能,需要打开main,js中 <br>
-        `createCanvasApp(CanvasApp).mount('#demo');`
-        <br>
-        这段注释
-    </h1>
+    <piechart @click="handleClick" :data="state.data" :x="150" :y="150" :r="100"/>
 </template>
 
 <script>
