@@ -44,18 +44,18 @@
             function editTodo(todo) {
                 state.beforeEditCache = todo.title;
                 // state.editedTodo = todo;
-                emit('update:editedTodo', todo);
+                emit('update:edited-todo', todo);
             }
 
             function cancelTodo(todo) {
                 todo.title = state.beforeEditCache;
                 // state.editedTodo = null;
-                emit('update:editedTodo', null);
+                emit('update:edited-todo', null);
             }
 
             function doneEdit(todo) {
                 // state.editedTodo = null;
-                emit('update:editedTodo', null);
+                emit('update:edited-todo', null);
             }
 
             return {...toRefs(state), editTodo, cancelTodo, doneEdit, removeTodo}

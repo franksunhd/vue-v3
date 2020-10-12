@@ -16,7 +16,7 @@
         },
         methods: {
             onInputChange(e) {
-                this.$emit('update:todoTitle', e.target.value);
+                this.$emit('update:todo-title', e.target.value);
             }
         }
     }
