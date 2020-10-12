@@ -1,7 +1,7 @@
 <template>
     <input type="text"
            :value="todoTitle"
-           @input="onInputChange"
+           @input="inputChange"
            v-bind="$attrs"/>
 </template>
 
@@ -14,10 +14,12 @@
                 default: ""
             }
         },
-        methods: {
-            onInputChange(e) {
-                this.$emit('update:todo-title', e.target.value);
+        setup(props, {emit}) {
+            function inputChange(e) {
+                emit('update:todo-title', e.target.value);
             }
+
+            return {inputChange}
         }
     }
 </script>
