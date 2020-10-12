@@ -4,7 +4,7 @@
         <EditTodo v-model:todo-title="newTodo"
                   @keyup.enter="addTodo" autofocus placeholder="新增今日待办" autocomplete="off"/>
         <ul>
-            <todoItem v-for="todo in filterTodos" :key="todo.id" :todo="todo"
+            <todoItem v-for="todo in filterToDos" :key="todo.id" :todo="todo"
                       v-model:edited-todo="editedTodo"
                       @remove-todo="removeTodo"/>
         </ul>
@@ -18,19 +18,19 @@
     import EditTodo from "./EditTodo";
     import todoItem from "./todoItem";
     import filterItem from "./filterItems";
-    import {useTodos} from "./useTodos";
+    import {useToDos} from "./useTodos";
     import {useFilter} from "./useFilter";
 
     export default {
-        name: "todos",
+        name: "toDos",
         components: {EditTodo, todoItem, filterItem},
         setup() {
             const todoState = reactive({
                 newTodo: '',
                 editedTodo: null, // 正在编辑的todo
             });
-            const {todos, addTodo, removeTodo} = useTodos(todoState);
-            const filterState = useFilter(todos);
+            const {toDos, addTodo, removeTodo} = useToDos(todoState);
+            const filterState = useFilter(toDos);
 
             return {
                 ...toRefs(todoState),

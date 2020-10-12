@@ -1,18 +1,18 @@
 import {reactive, computed} from 'vue';
 
 const filters = {
-    all(todos) {
-        return todos
+    all(toDos) {
+        return toDos;
     },
-    active(todos) {
-        return todos.filter(todo => !todo.completed)
+    active(toDos) {
+        return toDos.filter(todo => !todo.completed)
     },
-    completed(todos) {
-        return todos.filter(todo => todo.completed)
+    completed(toDos) {
+        return toDos.filter(todo => todo.completed)
     }
 };
 
-export function useFilter(todos) {
+export function useFilter(toDos) {
     const filterState = reactive({
         visibility: 'all',
         filterItems: [
@@ -20,8 +20,8 @@ export function useFilter(todos) {
             {label: "Active", value: 'active'},
             {label: "Completed", value: 'completed'},
         ],
-        filterTodos: computed(() => {
-            return filters[filterState.visibility](todos.value)
+        filterToDos: computed(() => {
+            return filters[filterState.visibility](toDos.value)
         })
     });
     return filterState;

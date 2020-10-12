@@ -2,24 +2,24 @@ import {ref, watchEffect} from 'vue';
 // 缓存操作
 const todoStorage = {
     fetch() {
-        let todos = JSON.parse(localStorage.getItem('vue3-todos') || '[]');
-        todos.forEach((todo, index) => {
+        let toDos = JSON.parse(localStorage.getItem('vue3-toDos') || '[]');
+        toDos.forEach((todo, index) => {
             todo.id = index + 1;
         });
-        return todos;
+        return toDos;
     },
-    save(todos) {
-        localStorage.setItem('vue3-todos', JSON.stringify(todos));
+    save(toDos) {
+        localStorage.setItem('vue3-toDos', JSON.stringify(toDos));
     }
 };
 
-export function useTodos(state) {
-    const todos = ref(todoStorage.fetch());
+export function useToDos(state) {
+    const toDos = ref(todoStorage.fetch());
 
     function addTodo() {
         if (state.newTodo.trim() !== "") {
-            todos.value.push({
-                id: todos.value.length + 1,
+            toDos.value.push({
+                id: toDos.value.length + 1,
                 title: state.newTodo,
                 completed: false
             });
@@ -28,12 +28,12 @@ export function useTodos(state) {
     }
 
     function removeTodo(todo) {
-        todos.value.splice(todos.value.indexOf(todo), 1);
+        toDos.value.splice(toDos.value.indexOf(todo), 1);
     }
 
     watchEffect(() => {
-        todoStorage.save(todos.value);
+        todoStorage.save(toDos.value);
     });
 
-    return {todos, removeTodo, addTodo}
+    return {toDos, removeTodo, addTodo}
 }
