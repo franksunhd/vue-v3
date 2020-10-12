@@ -2,7 +2,7 @@
     <li :class="{completed: todo.completed, editing: todo === editedTodo}">
         <!--绑定完成状态-->
         <div class="view">
-            <input type="checkbox" v-model="todo.completed">
+            <input type="checkbox" v-model="todo.completed"/>
             <label @dblclick="editTodo(todo)">{{todo.title}}</label>
             <button @click="removeTodo(todo)">X</button>
         </div>
@@ -58,7 +58,7 @@
                 emit('update:edited-todo', null);
             }
 
-            return {...toRefs(state), editTodo, cancelTodo, doneEdit, removeTodo}
+            return {...toRefs(state), removeTodo, editTodo, cancelTodo, doneEdit}
         },
         directives: {
             "todo-focus": (el, {value}) => {

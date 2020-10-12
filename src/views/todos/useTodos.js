@@ -17,11 +17,13 @@ export function useTodos(state) {
     const todos = ref(todoStorage.fetch());
 
     function addTodo() {
-        todos.value.push({
-            id: todos.value.length + 1,
-            title: state.newTodo,
-            completed: false
-        });
+        if (state.newTodo.trim() !== "") {
+            todos.value.push({
+                id: todos.value.length + 1,
+                title: state.newTodo,
+                completed: false
+            });
+        }
         state.newTodo = '';
     }
 

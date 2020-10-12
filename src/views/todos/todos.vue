@@ -5,7 +5,8 @@
                   @keyup.enter="addTodo" autofocus placeholder="新增今日待办" autocomplete="off"/>
         <ul>
             <todoItem v-for="todo in filterTodos" :key="todo.id" :todo="todo"
-                      v-model:edited-todo="editedTodo"/>
+                      v-model:edited-todo="editedTodo"
+                      @remove-todo="removeTodo"/>
         </ul>
         <!--过滤-->
         <filterItem :items="filterItems" v-model:filter-val="visibility"/>
