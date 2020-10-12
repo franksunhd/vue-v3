@@ -91,7 +91,7 @@ const draw = (el, noClear) => {
     if (!noClear) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
-    if (el.tag === "piechart") {
+    if (el.tag === "div" && el.is === "pieChart") {
         let {data, r, x, y} = el;
         let total = data.reduce((memo, current) => memo + current.count, 0);
         let start = 0, end = 0;

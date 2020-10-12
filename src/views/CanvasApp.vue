@@ -1,5 +1,5 @@
 <template>
-    <piechart @click="handleClick" :data="state.data" :x="150" :y="150" :r="100"/>
+    <div is="pieChart" @click="handleClick" :data="state.data" :x="150" :y="150" :r="100"/>
 </template>
 
 <script>
