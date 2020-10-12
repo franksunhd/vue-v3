@@ -56,6 +56,12 @@ const routes = [
         meta: {title: '移除的API'},
         component: () => import('../views/removeApi')
     },
+    {
+        path: '/todos',
+        name: 'todos',
+        meta: {title: 'vue3核心特性小练习'},
+        component: () => import('../views/todos/todos')
+    },
 ];
 
 const router = createRouter({
