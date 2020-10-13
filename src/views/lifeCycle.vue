@@ -17,6 +17,8 @@
         onMounted,
         onBeforeUpdate,
         onUpdated,
+        onRenderTracked,
+        onRenderTriggered,
         reactive,
         toRefs
     } from 'vue';
@@ -50,6 +52,22 @@
 
             console.log('1.开始创建组件-----setup()');
 
+            // 状态跟踪  用return返回去的值，都会跟踪
+            onRenderTracked((event) => {
+                console.log("状态跟踪组件----------->", event);
+            });
+
+            // 状态触发组件
+            onRenderTriggered((event) => {
+                console.log("状态触发组件--------------->", event);
+                /*
+                    - key 那边变量发生了变化
+                    - newValue 更新后变量的值
+                    - oldValue 更新前变量的值
+                    - target 目前页面中的响应变量和函数
+                */
+            });
+
             return {...toRefs(data)}
         },
         beforeCreate() {
@@ -70,9 +88,6 @@
         updated() {
             console.log('5.1 组件更新之后执行-----updated()');
         },
-        /*
-        *
-        */
     }
 </script>
 
