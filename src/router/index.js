@@ -74,6 +74,12 @@ const routes = [
         meta: {title: 'watch监听'},
         component: () => import('../views/watchTest')
     },
+    {
+        path: '/useDogs',
+        name: 'useDogs',
+        meta: {title: '模块化深入'},
+        component: () => import('../views/useDogs')
+    },
 ];
 
 const router = createRouter({
