@@ -5,7 +5,7 @@
     <h1>等价于</h1>
     <v-model-child :modelValue="counter" @update:modelValue="counter = $event"/>
     <hr>
-    <h2>组件支持多个v-model</h2>
+    <h2 class="text">组件支持多个v-model</h2>
 </template>
 
 <script>
@@ -15,6 +15,11 @@
     export default {
         name: "VModel",
         components: {VModelChild},
+        data() {
+            return {
+                color: 'red'
+            }
+        },
         setup() {
             let counter = ref(1);
             return {counter};
@@ -22,6 +27,8 @@
     }
 </script>
 
-<style scoped>
-
+<style scoped vars="{color}">
+    .text {
+        color: var(--color);
+    }
 </style>
