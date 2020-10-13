@@ -17,7 +17,7 @@
 </template>
 
 <script>
-    import {ref, watch, reactive, toRefs, onMounted} from 'vue';
+    import {ref, watch, reactive, toRefs, onMounted, onUnmounted} from 'vue';
 
     export default {
         name: "watchTest",
@@ -55,6 +55,12 @@
                 timer = setTimeout(getNowTime, 1000);   //每一秒执行一次这个方法
                 console.log(timer)
             };
+
+            // 组件销毁后
+            onUnmounted(() => {
+                clearTimeout(timer); // 清除定时器
+                timer = null;
+            });
 
             return {
                 nowTime,
