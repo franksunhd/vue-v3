@@ -4,6 +4,8 @@
     <!--等价于-->
     <h1>等价于</h1>
     <v-model-child :modelValue="counter" @update:modelValue="counter = $event"/>
+    <hr>
+    <h2>组件支持多个v-model</h2>
 </template>
 
 <script>
