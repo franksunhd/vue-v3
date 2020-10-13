@@ -68,6 +68,12 @@ const routes = [
         meta: {title: '生命周期'},
         component: () => import('../views/lifeCycle')
     },
+    {
+        path: '/watchTest',
+        name: 'watchTest',
+        meta: {title: 'watch监听'},
+        component: () => import('../views/watchTest')
+    },
 ];
 
 const router = createRouter({
