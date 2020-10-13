@@ -57,10 +57,10 @@ const routes = [
         component: () => import('../views/removeApi')
     },
     {
-        path: '/todos',
-        name: 'todos',
+        path: '/toDos',
+        name: 'toDos',
         meta: {title: 'vue3核心特性小练习'},
-        component: () => import('../views/todos/todos')
+        component: () => import('../views/toDos/toDos')
     },
     {
         path: '/lifeCycle',
