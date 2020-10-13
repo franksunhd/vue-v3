@@ -62,6 +62,12 @@ const routes = [
         meta: {title: 'vue3核心特性小练习'},
         component: () => import('../views/todos/todos')
     },
+    {
+        path: '/lifeCycle',
+        name: 'lifeCycle',
+        meta: {title: '生命周期'},
+        component: () => import('../views/lifeCycle')
+    },
 ];
 
 const router = createRouter({
