@@ -80,6 +80,12 @@ const routes = [
         meta: {title: '模块化深入'},
         component: () => import('../views/useDogs')
     },
+    {
+        path: '/setup',
+        name: 'setup',
+        meta: {title: 'setup'},
+        component: () => import('../views/setup')
+    },
 ];
 
 const router = createRouter({
