@@ -123,7 +123,9 @@
         setup(props, ctx) {
             console.log('setup');
             console.log(props, ctx);
-            // this在setup中不可用
+            // 不要解构 props 对象，那样会使其失去响应性：
+            // this在setup中不可用 setup() 中的 this 将与 2.x 选项中的 this 完全不同。
+            // console.log(this) // undefined
 
             // 这个的逻辑很清晰 告别大几百行的逻辑组件
             let {
@@ -152,6 +154,30 @@
 
         // 相比于mixin好处 数据来源清晰
 
-        // 如何组合
+        /*
+        * reactive
+        * 响应式转换是“深层的”：会影响对象内部所有嵌套的属性。
+        * 基于 ES2015 的 Proxy 实现，返回的代理对象不等于原始对象。
+        * 建议仅使用代理对象而避免依赖原始对象。
+        */
+
+
+        /*
+         * export const enum PatchFlags {
+         *      TEXT = 1, // 动态文本节点
+         *      CLASS = 1 << 1, // 2 动态 class
+         *      STYLE = 1 << 2, // 4 动态 style
+         *      PROPS = 1 << 3, // 8 动态属性，但不包含类名和样式 如果是组件，则可以包含类名和样式
+         *      FULL_PROPS = 1 << 4, // 16 具有动态 key 属性，当 key 改变时，需要进行完整的 diff 比较。
+         *      HYDRATE_EVENTS = 1 << 5, // 32 带有监听事件的节点
+         *      STABLE_FRAGMENT = 1 << 6, // 64 一个不会改变子节点顺序的 fragment
+         *      KEYED_FRAGMENT = 1 << 7, // 128 带有 key 属性的 fragment 或部分子字节有 key
+         *      UNKEYED_FRAGMENT = 1 << 8, // 256 子节点没有 key 的 fragment
+         *      NEED_PATCH = 1 << 9, // 512 一个节点只会进行非 props 比较
+         *      DYNAMIC_SLOTS = 1 << 10, // 1024 动态 slot
+         *      HOISTED = -1, // 静态节点
+         *      BAIL = -2 // 指示在 diff 过程应该要退出优化模式
+         * }
+         */
     };
 </script>
