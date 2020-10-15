@@ -14,15 +14,15 @@
     export default {
         name: "fragments",
         setup() {
-            let code = `\<\ template > <br>
-                  \< header \> header <\ /header ><br>
-                \< main v-bind="$attrs"\>main<\ /main ><br>
-                \< footer \> footer <\ /footer ><br>
-            <\ /template >`;
+            let code = `<span><</span>template><br>&nbsp;&nbsp;
+                <span><</span>header>header<span><</span>/header><br>&nbsp;&nbsp;
+                <span><</span>main v-bind="$attrs">main<span><</span>/main><br>&nbsp;&nbsp;
+                <span><</span>footer>footer<span><</span>/footer><br>
+            <span><</span>/template>`;
 
-            return {code}
+            return {code};
         }
-    }
+    };
 </script>
 
 <style scoped>
