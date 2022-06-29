@@ -91,6 +91,12 @@ const routes = [
         name: "reactiveApi",
         meta: {title: "响应式Api"},
         component: () => import("../views/reactiveApi")
+    },
+    {
+        path: "/ElementUI",
+        name: "ElementUI",
+        meta: {title: "elementUI"},
+        component: () => import("../views/ElementUI/ElementUI")
     }
 ];
 

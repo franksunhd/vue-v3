@@ -1,25 +1,25 @@
-import {createApp, createRenderer, h} from 'vue';
-import App from './App.vue';
-import router from './router';
-import store from './store';
+import {createApp, createRenderer, h} from "vue";
+import App from "./App.vue";
+import router from "./router";
+import store from "./store";
 
 // 全局引入css
 import "./assets/css/base.css";
 import "./assets/css/common.css";
 import CanvasApp from "./views/CanvasApp";
 
+import ElementPlus from "element-plus";
+import "element-plus/dist/index.css";
+
 // 注意 h,use,mount,render,createRenderer 是 runtime-core的内容
 // createApp 是runtime-dom的内容
-createApp(App)
-    .component('comp', {render: () => h('h2', '我是自定义组件,在main.js定义')})
-    .use(store)
-    .use(router)
-    .directive('highlight', {
-        beforeMount(el, binding, vnode) {
-            el.style.color = binding.value;
-        }
-    })
-    .mount('#app');
+createApp(App).component("comp", {render: () => h("h2", "我是自定义组件,在main.js定义")})
+    .use(ElementPlus)
+    .use(store).use(router).directive("highlight", {
+    beforeMount(el, binding, vnode) {
+        el.style.color = binding.value;
+    }
+}).mount("#app");
 
 // 阻止启用生产消息  在vue3中删除了
 // Vue.config.productionTip = false;
@@ -48,12 +48,12 @@ const nodeOps = {
 
             // 事件处理
             if (child.onClick) {
-                canvas.addEventListener('click', () => {
+                canvas.addEventListener("click", () => {
                     child.onClick();
                     setTimeout(() => {
                         draw(child);
                     }, 0);
-                })
+                });
             }
         }
     },
@@ -128,7 +128,7 @@ const drawPieChartText = (val, position, cx, cy, r) => {
     ctx.beginPath();
     let x = cx + Math.cos(d2a(position)) * r / 1.25 - 20;
     let y = cx + Math.sin(d2a(position)) * r / 1.25;
-    ctx.fillStyle = '#000';
+    ctx.fillStyle = "#000";
     ctx.font = "20px 微软雅黑";
     ctx.fillText(val, x, y);
     ctx.closePath();
@@ -140,8 +140,8 @@ function createCanvasApp(App) {
     const mount = app.mount;
     app.mount = function (selector) {
         // 创建并插入画布
-        canvas = document.createElement('canvas');
-        ctx = canvas.getContext('2d');
+        canvas = document.createElement("canvas");
+        ctx = canvas.getContext("2d");
         // 设置画布属性
         canvas.width = 300;
         canvas.height = 300;
@@ -153,7 +153,7 @@ function createCanvasApp(App) {
     return app;
 }
 
-createCanvasApp(CanvasApp).mount('#demo');
+createCanvasApp(CanvasApp).mount("#demo");
 
 /*
 * 为啥这么玩？
