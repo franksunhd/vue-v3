@@ -11,8 +11,8 @@
 </template>
 
 <script>
-    import {useGetDogs} from '../components/useUrlDog';
-    import {toRefs} from 'vue';
+    import {useGetDogs} from "../components/useUrlDog";
+    import {toRefs} from "vue";
 
     export default {
         name: "useDogs",
@@ -21,7 +21,7 @@
 
             return {clickDogs, ...toRefs(state)};
         }
-    }
+    };
 </script>
 
 <style scoped>

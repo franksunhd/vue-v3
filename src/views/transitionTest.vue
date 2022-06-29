@@ -15,16 +15,16 @@
 </template>
 
 <script>
-    import {ref} from 'vue';
+    import {ref} from "vue";
 
     export default {
         name: "transitionTest",
         setup() {
             const show = ref(true);
 
-            return {show}
+            return {show};
         }
-    }
+    };
 </script>
 
 <style scoped>

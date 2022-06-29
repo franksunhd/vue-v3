@@ -11,16 +11,16 @@
 <script>
     export default {
         name: "emits",
-        emits: ['my_click'],
+        emits: ["my_click"],
         setup() {
 
             function my_click() {
-                console.log('hello');
+                console.log("hello");
             }
 
-            return {my_click}
+            return {my_click};
         }
-    }
+    };
 </script>
 
 <style scoped>

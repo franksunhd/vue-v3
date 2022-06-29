@@ -3,7 +3,7 @@
 </template>
 
 <script>
-    import {reactive} from 'vue';
+    import {reactive} from "vue";
 
     export default {
         name: "CanvasApp",
@@ -13,7 +13,7 @@
                     {name: "大专", count: 200, color: "brown"},
                     {name: "本科", count: 300, color: "yellow"},
                     {name: "硕士", count: 100, color: "pink"},
-                    {name: "博士", count: 50, color: "skyblue"},
+                    {name: "博士", count: 50, color: "skyblue"}
                 ]
             });
 
@@ -23,7 +23,7 @@
 
             return {state, handleClick};
         }
-    }
+    };
 </script>
 
 <style scoped>

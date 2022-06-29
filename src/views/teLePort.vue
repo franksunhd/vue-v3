@@ -21,7 +21,7 @@
 </template>
 
 <script>
-    import {ref} from 'vue';
+    import {ref} from "vue";
 
     export default {
         name: "teLePort",
@@ -29,7 +29,7 @@
             let modelOpen = ref(false);
             return {modelOpen};
         }
-    }
+    };
 </script>
 
 <style scoped lang="less">

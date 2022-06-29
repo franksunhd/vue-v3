@@ -6,7 +6,7 @@
         return h(`h${props.level}`, context.attrs, context.slots);
     }
 
-    Heading.props = ['level'];
+    Heading.props = ["level"];
 
     export default Heading;
 </script>

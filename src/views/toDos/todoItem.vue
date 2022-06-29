@@ -18,7 +18,7 @@
 </template>
 
 <script>
-    import {reactive, toRefs} from 'vue';
+    import {reactive, toRefs} from "vue";
     import EditTodo from "./EditTodo";
 
     export default {
@@ -30,35 +30,35 @@
             },
             editedTodo: Object
         },
-        emits: ['remove-todo', 'update:edited-todo'],
+        emits: ["remove-todo", "update:edited-todo"],
         components: {EditTodo},
         setup(props, {emit}) {
             const state = reactive({
-                beforeEditCache: "", // 缓存编辑前的title
+                beforeEditCache: "" // 缓存编辑前的title
             });
 
             function removeTodo(todo) {
-                emit('remove-todo', todo);
+                emit("remove-todo", todo);
             }
 
             function editTodo(todo) {
                 state.beforeEditCache = todo.title;
                 // state.editedTodo = todo;
-                emit('update:edited-todo', todo);
+                emit("update:edited-todo", todo);
             }
 
             function cancelTodo(todo) {
                 todo.title = state.beforeEditCache;
                 // state.editedTodo = null;
-                emit('update:edited-todo', null);
+                emit("update:edited-todo", null);
             }
 
             function doneEdit(todo) {
                 // state.editedTodo = null;
-                emit('update:edited-todo', null);
+                emit("update:edited-todo", null);
             }
 
-            return {...toRefs(state), removeTodo, editTodo, cancelTodo, doneEdit}
+            return {...toRefs(state), removeTodo, editTodo, cancelTodo, doneEdit};
         },
         directives: {
             "todo-focus": (el, {value}) => {
@@ -67,7 +67,7 @@
                 }
             }
         }
-    }
+    };
 </script>
 
 <style scoped>

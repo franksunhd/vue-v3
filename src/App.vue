@@ -12,7 +12,7 @@
 </template>
 
 <script>
-    import routerList from './router/index';
+    import routerList from "./router/index";
 
     export default {
         name: "App",
@@ -28,7 +28,7 @@
 
             return {menuList};
         }
-    }
+    };
 </script>
 
 <style lang="less">

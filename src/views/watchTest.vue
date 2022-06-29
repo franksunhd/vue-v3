@@ -17,14 +17,14 @@
 </template>
 
 <script>
-    import {ref, watch, reactive, toRefs, onMounted, onUnmounted} from 'vue';
+    import {ref, watch, reactive, toRefs, onMounted, onUnmounted} from "vue";
 
     export default {
         name: "watchTest",
         setup() {
             const overText = ref("红浪漫");
             const girls = reactive({
-                selectName: ''
+                selectName: ""
             });
 
             const overAction = () => {
@@ -53,7 +53,7 @@
                 nowTime.value = hour + ":" + min + ":" + sec;
                 clearTimeout(timer); // 清除上一次的定时器
                 timer = setTimeout(getNowTime, 1000);   //每一秒执行一次这个方法
-                console.log(timer)
+                console.log(timer);
             };
 
             // 组件销毁后
@@ -70,7 +70,7 @@
                 ...toRefs(girls)
             };
         }
-    }
+    };
 </script>
 
 <style scoped>

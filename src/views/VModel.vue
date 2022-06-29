@@ -10,25 +10,23 @@
 
 <script>
     import VModelChild from "./VModelChild";
-    import {ref} from 'vue';
+    import {ref} from "vue";
 
     export default {
         name: "VModel",
         components: {VModelChild},
         data() {
             return {
-                color: 'red'
-            }
+                color: "red"
+            };
         },
         setup() {
             let counter = ref(1);
             return {counter};
         }
-    }
+    };
 </script>
 
-<style scoped vars="{color}">
-    .text {
-        color: var(--color);
-    }
+<style scoped>
+
 </style>

@@ -1,15 +1,15 @@
-import {ref, watchEffect} from 'vue';
+import {ref, watchEffect} from "vue";
 // 缓存操作
 const todoStorage = {
     fetch() {
-        let toDos = JSON.parse(localStorage.getItem('vue3-toDos') || '[]');
+        let toDos = JSON.parse(localStorage.getItem("vue3-toDos") || "[]");
         toDos.forEach((todo, index) => {
             todo.id = index + 1;
         });
         return toDos;
     },
     save(toDos) {
-        localStorage.setItem('vue3-toDos', JSON.stringify(toDos));
+        localStorage.setItem("vue3-toDos", JSON.stringify(toDos));
     }
 };
 
@@ -24,7 +24,7 @@ export function useToDos(state) {
                 completed: false
             });
         }
-        state.newTodo = '';
+        state.newTodo = "";
     }
 
     function removeTodo(todo) {
@@ -35,5 +35,5 @@ export function useToDos(state) {
         todoStorage.save(toDos.value);
     });
 
-    return {toDos, removeTodo, addTodo}
+    return {toDos, removeTodo, addTodo};
 }

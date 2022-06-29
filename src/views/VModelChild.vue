@@ -15,7 +15,7 @@
                 default: 0
             }
         }
-    }
+    };
 </script>
 
 <style scoped>

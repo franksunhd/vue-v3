@@ -1,20 +1,21 @@
-import {ref, reactive, unref, toRef, toRefs, computed, watch, onMounted, onUnmounted} from 'vue';
+import {ref, reactive, unref, toRef, toRefs, computed, watch, onMounted, onUnmounted} from "vue";
 import {emitter} from "./emitter";
 
 function useAddTodo() {
     // ref 简单的数据结构变成响应式
     let count = ref(0);
+
     function add() {
         count.value++;
 
-        emitter.emit('sendMsg', count.value);
+        emitter.emit("sendMsg", count.value);
     }
 
     // reactive 复杂的数据结构变成响应式
     let state = reactive({
         list: [
             {name: "吃烧烤", value: false},
-            {name: "打游戏", value: false},
+            {name: "打游戏", value: false}
         ],
         val: ""
     });
@@ -23,7 +24,7 @@ function useAddTodo() {
     let stateUnref = reactive({
         list: [
             {name: "看电影", value: false},
-            {name: "斗地主", value: false},
+            {name: "斗地主", value: false}
         ],
         val: ""
     });

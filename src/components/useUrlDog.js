@@ -1,5 +1,5 @@
-import {ref, reactive, toRefs} from 'vue'
-import axios from 'axios'
+import {ref, reactive, toRefs} from "vue";
+import axios from "axios";
 
 function getUrl(url) {
     let result = ref(null);
@@ -15,7 +15,7 @@ function getUrl(url) {
         error.value = e;
         loading.value = false;
     });
-    return {result, loading, loaded, error}
+    return {result, loading, loaded, error};
 }
 
 function getDogs() {

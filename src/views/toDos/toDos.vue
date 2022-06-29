@@ -14,7 +14,7 @@
 </template>
 
 <script>
-    import {reactive, toRefs} from 'vue';
+    import {reactive, toRefs} from "vue";
     import EditTodo from "./EditTodo";
     import todoItem from "./todoItem";
     import filterItem from "./filterItems";
@@ -26,8 +26,8 @@
         components: {EditTodo, todoItem, filterItem},
         setup() {
             const todoState = reactive({
-                newTodo: '',
-                editedTodo: null, // 正在编辑的todo
+                newTodo: "",
+                editedTodo: null // 正在编辑的todo
             });
             const {toDos, addTodo, removeTodo} = useToDos(todoState);
             const filterState = useFilter(toDos);
@@ -36,10 +36,10 @@
                 ...toRefs(todoState),
                 ...toRefs(filterState),
                 addTodo,
-                removeTodo,
-            }
+                removeTodo
+            };
         }
-    }
+    };
 </script>
 
 <style scoped>

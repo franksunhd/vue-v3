@@ -7,7 +7,7 @@
 </template>
 
 <script>
-    import {h, ref} from 'vue';
+    import {h, ref} from "vue";
 
     export default {
         name: "renderTest",
@@ -20,19 +20,19 @@
                     }
                 },
                 render() {
-                    return h('div', [
-                        h('h1', {
+                    return h("div", [
+                        h("h1", {
                             onClick: this.onClick
                         }, [
                             `I am RenderTest: ${this.counter}`,
                             this.$slots.default(),
                             this.$slots.content()
-                        ]),
-                    ])
+                        ])
+                    ]);
                 },
                 methods: {
                     onClick() {
-                        this.$emit('update:counter', this.counter + 1);
+                        this.$emit("update:counter", this.counter + 1);
                     }
                 }
             }
@@ -42,7 +42,7 @@
 
             return {count};
         }
-    }
+    };
 </script>
 
 <style scoped>

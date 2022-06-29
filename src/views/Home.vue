@@ -92,7 +92,7 @@
 </template>
 
 <script>
-    import {defineAsyncComponent} from 'vue';
+    import {defineAsyncComponent} from "vue";
     // composition api 外引入
     import useAddTodo from "../components/useAddTodo";
     import useMouse from "../components/useMouse";
@@ -109,19 +109,19 @@
             Functional,
             removeApi,
             asyncComponent: defineAsyncComponent({
-                loader: () => import('./AsyncComponent.vue'),
+                loader: () => import("./AsyncComponent.vue"),
                 delay: 200,
-                timeout: 3000,
+                timeout: 3000
                 // errorComponent: xxx,
                 // loadingComponent: xxx
             })
         },
         props: {
-            username: {type: String, default: "hello setup"},
+            username: {type: String, default: "hello setup"}
         },
         // 好在哪
         setup(props, ctx) {
-            console.log('setup');
+            console.log("setup");
             console.log(props, ctx);
             // 不要解构 props 对象，那样会使其失去响应性：
             // this在setup中不可用 setup() 中的 this 将与 2.x 选项中的 this 完全不同。
@@ -135,7 +135,7 @@
             let {x, y} = useMouse();
 
             function onClick() {
-                console.log('click me!');
+                console.log("click me!");
             }
 
             // 一大堆 useXX
@@ -144,12 +144,12 @@
                 state, list, val, total,
                 x, y,
                 num, doubleNum, desc,
-                onClick, add, addList, addVal,
+                onClick, add, addList, addVal
             };
 
         },
         beforeCreate() {
-            console.log('beforeCreate');
+            console.log("beforeCreate");
         }
 
         // 相比于mixin好处 数据来源清晰

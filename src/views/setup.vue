@@ -4,7 +4,7 @@
 </template>
 
 <script>
-    import {ref, reactive, h} from "vue";
+    import {ref, reactive} from "vue";
 
     export default {
         name: "setup",

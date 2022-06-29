@@ -16,12 +16,12 @@
         },
         setup(props, {emit}) {
             function inputChange(e) {
-                emit('update:todo-title', e.target.value);
+                emit("update:todo-title", e.target.value);
             }
 
-            return {inputChange}
+            return {inputChange};
         }
-    }
+    };
 </script>
 
 <style scoped>

@@ -16,7 +16,7 @@
 </template>
 
 <script>
-    import {ref} from 'vue';
+    import {ref} from "vue";
     import {emitter} from "../components/emitter";
 
     export default {
@@ -29,12 +29,12 @@
         },
         setup() {
             let count = ref(0);
-            emitter.on('sendMsg', msg => {
+            emitter.on("sendMsg", msg => {
                 count.value = msg;
             });
-            return {count}
+            return {count};
         }
-    }
+    };
 </script>
 
 <style scoped>

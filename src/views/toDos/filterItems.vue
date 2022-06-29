@@ -10,9 +10,9 @@
 <script>
     export default {
         name: "filterItems",
-        props: ['items', 'filterVal'],
-        emits: ['update:filterVal']
-    }
+        props: ["items", "filterVal"],
+        emits: ["update:filterVal"]
+    };
 </script>
 
 <style scoped>

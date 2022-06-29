@@ -36,7 +36,7 @@
 </template>
 
 <script>
-    import {nextTick} from 'vue';
+    import {nextTick} from "vue";
 
     export default {
         name: "globalApi",
@@ -45,30 +45,30 @@
             let list = [
                 {
                     flag: 1, child: [
-                        {left: '2.x Global API', right: '3.x Instance API (app)'},
+                        {left: "2.x Global API", right: "3.x Instance API (app)"}
                     ]
                 },
                 {
                     flag: 2, child: [
-                        {left: 'Vue.config', right: 'app.config'},
-                        {left: 'Vue.config.productionTip', right: 'removed (see below)'},
-                        {left: 'Vue.config.ignoredElements', right: ' app.config.isCustomElement (see below)'},
-                        {left: 'Vue.component', right: 'app.component'},
-                        {left: 'Vue.directive', right: 'app.directive'},
-                        {left: 'Vue.mixin', right: 'app.mixin'},
-                        {left: 'Vue.use', right: 'app.use (see below)'},
-                        {left: 'Vue.filter', right: 'removed'},
+                        {left: "Vue.config", right: "app.config"},
+                        {left: "Vue.config.productionTip", right: "removed (see below)"},
+                        {left: "Vue.config.ignoredElements", right: " app.config.isCustomElement (see below)"},
+                        {left: "Vue.component", right: "app.component"},
+                        {left: "Vue.directive", right: "app.directive"},
+                        {left: "Vue.mixin", right: "app.mixin"},
+                        {left: "Vue.use", right: "app.use (see below)"},
+                        {left: "Vue.filter", right: "removed"}
                     ]
                 }
             ];
 
             nextTick(() => {
-                console.log('nextTick is here!!!')
+                console.log("nextTick is here!!!");
             });
 
-            return {list}
+            return {list};
         }
-    }
+    };
 </script>
 
 <style scoped lang="less">
