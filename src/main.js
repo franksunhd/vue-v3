@@ -10,11 +10,13 @@ import CanvasApp from "./views/CanvasApp";
 
 import ElementPlus from "element-plus";
 import "element-plus/dist/index.css";
+import ElementUI from "./components/ElementUI";
 
 // 注意 h,use,mount,render,createRenderer 是 runtime-core的内容
 // createApp 是runtime-dom的内容
 createApp(App).component("comp", {render: () => h("h2", "我是自定义组件,在main.js定义")})
     .use(ElementPlus)
+    .use(ElementUI)
     .use(store).use(router).directive("highlight", {
     beforeMount(el, binding, vnode) {
         el.style.color = binding.value;
